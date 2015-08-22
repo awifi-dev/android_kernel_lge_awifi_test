@@ -180,18 +180,27 @@ struct tabla_mbhc_config {
 	/* swap_gnd_mic returns true if extern GND/MIC swap switch toggled */
 	bool (*swap_gnd_mic) (struct snd_soc_codec *);
 };
-extern int tabla_check_bandgap_status(struct snd_soc_codec *codec);
-
-extern void tabla_set_h2w_status(struct snd_soc_codec *codec, u32 status);
 
 extern int tabla_hs_detect(struct snd_soc_codec *codec,
 			   const struct tabla_mbhc_config *cfg);
 
-enum h2w_status {
-	H2W_NONE = 0,
-	H2W_HEADSET,
-	H2W_HEADPHONE,
-};
+#ifdef CONFIG_SWITCH_MAX1462X
+extern void set_headset_mic_bias_l10(int on); //                                                           
+#endif
+#ifdef CONFIG_SWITCH_FSA8008
+/*
+                               
+                                                             
+                                   
+*/
+extern void set_headset_mic_bias_l29(int on); //                                                                                 
+extern void tabla_codec_micbias2_ctl(int enable); 
+#endif
+//                                                                                        
+#ifdef CONFIG_SWITCH_FSA8008
+void tabla_codec_micbias3_ctl(int enable);
+#endif
+//                                                                                      
 
 struct anc_header {
 	u32 reserved[3];

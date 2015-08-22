@@ -72,7 +72,6 @@ obj-$(CONFIG_ATA_OVER_ETH)	+= block/aoe/
 obj-$(CONFIG_PARIDE) 		+= block/paride/
 obj-$(CONFIG_TC)		+= tc/
 obj-$(CONFIG_UWB)		+= uwb/
-obj-$(CONFIG_POWER_SUPPLY)      += power/
 obj-$(CONFIG_USB_OTG_UTILS)	+= usb/
 obj-$(CONFIG_USB)		+= usb/
 obj-$(CONFIG_PCI)		+= usb/
@@ -86,6 +85,7 @@ obj-y				+= i2c/ media/
 obj-$(CONFIG_PPS)		+= pps/
 obj-$(CONFIG_PTP_1588_CLOCK)	+= ptp/
 obj-$(CONFIG_W1)		+= w1/
+obj-$(CONFIG_POWER_SUPPLY)	+= power/
 obj-$(CONFIG_HWMON)		+= hwmon/
 obj-$(CONFIG_THERMAL)		+= thermal/
 obj-$(CONFIG_WATCHDOG)		+= watchdog/
@@ -141,4 +141,13 @@ obj-$(CONFIG_PM_DEVFREQ)	+= devfreq/
 #MobiCore
 obj-$(CONFIG_MOBICORE_SUPPORT)  += gud/
 
-obj-$(CONFIG_CORESIGHT)		+= coresight/
+obj-$(CONFIG_CORESIGHT)         += coresight/
+
+#1Seg
+obj-$(CONFIG_LGE_BROADCAST_ONESEG) += broadcast/
+
+#TDMB
+obj-$(CONFIG_LGE_BROADCAST_TDMB) += broadcast/
+
+#FeliCa
+obj-$(CONFIG_LGE_FELICA) 	+= felica/

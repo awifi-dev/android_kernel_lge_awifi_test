@@ -1574,9 +1574,15 @@ void input_reset_device(struct input_dev *dev)
 		 * Keys that have been pressed at suspend time are unlikely
 		 * to be still pressed when we resume.
 		 */
-		spin_lock_irq(&dev->event_lock);
+/*           
+                                                                        
+                                                           
+                                   
+ */
+/*		spin_lock_irq(&dev->event_lock);
 		input_dev_release_keys(dev);
 		spin_unlock_irq(&dev->event_lock);
+ */
 	}
 
 	mutex_unlock(&dev->mutex);
@@ -1602,10 +1608,7 @@ static int input_dev_resume(struct device *dev)
 {
 	struct input_dev *input_dev = to_input_dev(dev);
 
-	/* If device is configured to wake device do not reset keys. */
-	if (!device_can_wakeup(dev)) {
-		input_reset_device(input_dev);
-	}
+	input_reset_device(input_dev);
 
 	return 0;
 }
